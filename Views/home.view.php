@@ -12,7 +12,7 @@ include 'includes/header.php';
           alt="imagen de la  rifa" class="w-full h-full">
       </div>
       <?php foreach ($rifas as $value):?>
-      <div class="info-rifa text-center">
+      <div class="info-rifa text-center">  
 
         <h1 class="text-4xl text-center text-yellow-500 font-bold">
           <?= $value->Nombre ?>

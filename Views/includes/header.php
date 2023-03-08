@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
  
 </head>
-
+  
 <body class="bg-gray-200">
 
   <nav class="bg-teal-700 border-gray-200 px-2 sm:px-4 py-2.5 rounded ">

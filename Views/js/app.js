@@ -67,7 +67,7 @@ $(document).ready(function () {
     $('.boletoDisponible').click(function () {
         let id = $(this).attr('id');
         console.log(boletosApartados);
-        // Validar si ya esta apartado el boleto
+        // Validar si ya esta apartado el boleto  
         if (boletosApartados.search(id) >= 0) {
             alert('El boleto ya esta apartado')
 

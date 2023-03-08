@@ -11,7 +11,7 @@ class RifasModel
         return $query->fetchAll(PDO::FETCH_CLASS);
     }
 
-    static public function Boletos_disponibles(int $id_rifa)
+    static public function Boletos_disponibles(int $id_rifa)  
     {
         $query = ConexionDB::connection()->prepare("CALL Consultar_boletos(5,$id_rifa)");
         $query->execute();

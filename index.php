@@ -14,4 +14,4 @@ require_once 'controllers/home.controller.php';
     }
     else {
         echo "Si hay peteticion en la ruta: ".$uri[1];
-    }
+    } 
