@@ -5,7 +5,7 @@ include 'includes/header.php';
   <h2 class="text-6xl text-center text-gray-700 font-black">Rifas de Hoy</h2>
   <br>
   <div class="tarjeta w-[90%] mx-auto border-solid border-slate-200 border-2 bg-gray-100  h-fill">
-    <div class="contenedor-rifa grid grid-cols-2">
+    <div class="contenedor-rifa grid grid-cols-1 md:grid-cols-2">
       <div class="imagen-rifa">
         <img
           src="https://fotos.perfil.com//2021/06/25/900/0/hennessey-mammoth-1000-trx-asi-es-la-camioneta-mas-picante-y-potente-del-mundo-1195419.jpg"
@@ -42,14 +42,16 @@ include 'includes/header.php';
         <i class="fa-solid text-xl  m-1 rounded p-1 bg-gray-700 fa-ticket text-white"></i><b>Boleto Apartado</b>
       </p>
       <br>
-      <div class="contenedor-boletos text-center grid grid-cols-10 gap-3">
+      <div class="contenedor-boletos text-center grid grid-cols-5  lg:grid-cols-10 gap-3">
         <?php foreach ($boletos as $value):
           if ($value->status == 0) { ?>
             <button id=" <?= $value->numero ?>"
-              class="p-2 fa-solid boleto boletoDisponible  rounded  bg-teal-700 fa-ticket text-white">
+              class=" boleto boletoDisponible text-2xl rounded  bg-teal-700  text-white">
+              <i class="fa-solid fa-ticket"></i>  <br>
               <?= $value->numero ?></button>
           <?php } else { ?>
-            <button id=" <?= $value->numero ?>" class=" boleto p-2 fa-solid  rounded  bg-gray-700 fa-ticket text-white">
+            <button id=" <?= $value->numero ?>" class=" boleto text-2xl  rounded  bg-gray-700  text-white">
+             <i class="fa-solid fa-ticket"></i>  <br>
               <?= $value->numero ?></button>
           <?php }endforeach ?>
       </div>
