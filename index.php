@@ -3,6 +3,8 @@
 require_once 'models/rifas.model.php';
 // Requerir Controladores
 require_once 'controllers/home.controller.php';
+// Requerir Middlewares
+require_once 'middlewares/whatsapp.php';
 
     // Establecer la ruta a la cual se va acceder
     $uri = explode('/',$_SERVER['REQUEST_URI']);

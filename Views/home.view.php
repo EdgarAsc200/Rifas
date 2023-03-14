@@ -4,7 +4,7 @@ include 'includes/header.php';
 <main>
   <h2 class="text-6xl text-center text-gray-700 font-black">Rifas de Hoy</h2>
   <br>
-  <div class="tarjeta w-[90%] mx-auto border-solid border-slate-200 border-2 bg-gray-100  h-fill">
+  <div rifa="<?= $id_rifa ?>" class="tarjeta w-[90%] mx-auto border-solid border-slate-200 border-2 bg-gray-100  h-fill">
     <div class="contenedor-rifa grid grid-cols-1 md:grid-cols-2">
       <div class="imagen-rifa">
         <img
@@ -12,12 +12,12 @@ include 'includes/header.php';
           alt="imagen de la  rifa" class="w-full h-full">
       </div>
       <?php foreach ($rifas as $value):?>
-      <div class="info-rifa text-center">  
+      <div  class="info-rifa text-center">  
 
-        <h1 class="text-4xl text-center text-yellow-500 font-bold">
+        <h1 id="titulo-sorteo" class="text-4xl text-center text-yellow-500 font-bold">
           <?= $value->Nombre ?>
         </h1>
-        <H2 class="text-3xl text-white text-center bg-teal-700 mx-auto w-full"><?= $value->Descripcion ?></H2>
+        <H2 id="descripcion_sorteo" class="text-3xl text-white text-center bg-teal-700 mx-auto w-full"><?= $value->Descripcion ?></H2>
         <br>
        
         <p class="text-xl text-justify mx-2 text-teal-600"><?= $value->Mensaje ?></p>
@@ -60,7 +60,7 @@ include 'includes/header.php';
         <div class="boletos-apartados text-center flex">
 
         </div>
-        <button class=" rounded hover:bg-teal-800 my-3 px-4 py-3 bg-teal-700 text-white text-2xl">APARTAR
+        <button id="" class="apartarBoletos rounded hover:bg-teal-800 my-3 px-4 py-3 bg-teal-700 text-white text-2xl">APARTAR
           BOLETO</button>
       </div>
     </div>
