@@ -15,10 +15,16 @@ class HomeController
             $HomeController->ApartarBoletos($_POST);
 
         } else {
+            // Consulta la rifa e su informacion
             $response = RifasModel::mostrar_rifas();
             $rifas = $response;
             $id_rifa = $response[0]->id_rifas;
+            // Consulta los boletos de la rifa seleccionada
             $boletos = RifasModel::Boletos_disponibles($id_rifa);
+            // Mostrar los boletos Disponibles
+            $boletosDisponibles = RifasModel::BoletosDisponibles($id_rifa);
+
+            
 
             include 'views/home.view.php';
         }

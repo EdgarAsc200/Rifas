@@ -23,7 +23,7 @@ include 'includes/header.php';
         <p class="text-xl text-justify mx-2 text-teal-600"><?= $value->Mensaje ?></p>
         <h3>Fecha de Inicio: <b><?= $value->fecha_inicio ?></b> </h3>
         <h3>Fecha de Termino: <b><?= $value->fecha_inicio ?></b> </h3>
-        <h3><b class="text-3xl text-teal-700">45</b> <i class="fa-solid fa-ticket  text-teal-700"></i> <br>
+        <h3><b class="text-3xl text-teal-700"><?= $boletosDisponibles[0]->boletosDisponibles ?></b> <i class="fa-solid fa-ticket  text-teal-700"></i> <br>
           Disponibles
         </h3>
         <button id="verboletos" class="  text-teal-700 text-3xl my-3 px-4 py-3"><i class="fa-solid fa-chevron-down"></i>

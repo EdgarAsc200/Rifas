@@ -6,18 +6,6 @@ $(document).ready(function () {
     const id_rifa =$('.tarjeta').attr("rifa");
     const tituloSorteo = $('#descripcion_sorteo').text();
 
-   
-
-     MostrarBoletos = function(){
-        if (boletosApartados == '') {
-            $('.content-boletos').text('No hay Boletos Apartados')
-        }
-        else {
-            $('.content-boletos').text(`Tus numeros de boletos son:  \n ${boletosApartados}`)
-        }
-    }
-
-
     // Menu Responsivo
     $('#btn-responsive').click(function () {
         $('#menu-responsive').toggle()
@@ -27,8 +15,8 @@ $(document).ready(function () {
     $('#verboletos').click(function () {
         $('.boletos-disponibles').toggle('slow');
 
-
     })
+
     // Agregar los boletos a apartar
     $('.boletoDisponible').click(function () {
         let id = $(this).attr('id');
@@ -59,13 +47,18 @@ $(document).ready(function () {
                 $(boleto).addClass('boletoDisponible')
                 $(this).hide();
             });
-            // Emvio de boletos seleccionados
-           
         }
 
     });
-
-    
+    MostrarBoletos = function(){
+        if (boletosApartados == '') {
+            $('.content-boletos').text('No hay Boletos Apartados');
+            $('formulario-boletos').hide();
+        }
+        else {
+            $('.content-boletos').text(`Tus numeros de boletos son:  \n ${boletosApartados}`)
+        }
+    }
 //    Formulario Boletos Apartados
     $(".apartarBoletos").click(function(){
        $('#confirmar').show();
@@ -78,7 +71,7 @@ $(document).ready(function () {
 
     $('#formulario-boletos').submit(function(e){
         e.preventDefault();
-        const url = 'http://sorteoseltapatio.com/'
+        const url = location.href;
         const data = {
             boletos: boletosApartados,
             numero: $('#phone').val(),
@@ -99,7 +92,13 @@ $(document).ready(function () {
             success: function(response){
                 console.log(response);
                 const nombre = data.nombre+" "+data.apellido
-                Mensaje(data.boletos,nombre);
+                 Mensaje(data.boletos,nombre);
+                Swal.fire({
+                    title: 'Exito!',
+                    text: 'Tus Boletos han sido Apartados',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                  }.then(location.reload()));
                 
             }
         })

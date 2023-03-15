@@ -10,6 +10,14 @@ class RifasModel
         $query->execute();
         return $query->fetchAll(PDO::FETCH_CLASS);
     }
+    static public function BoletosDisponibles(int $id)
+    {
+        $query = ConexionDB::connection()->prepare('SELECT  count(status) as boletosDisponibles from detalle_rifas where status = 0 and id_rifa = :id_rifa;');
+        $query->bindParam(':id_rifa',$id, PDO::PARAM_INT);
+        $query->execute();
+
+        return $query->fetchAll(PDO::FETCH_CLASS);
+    }
 
     static public function Boletos_disponibles(int $id_rifa)
     {

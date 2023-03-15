@@ -9,7 +9,7 @@ class ConexionDB {
             $connect->exec('set names utf8');
   
         } catch (PDOException $e) {
-            die("Error: ".$e->getMessage());
+           return die("Error no puede ser: ");
         }
 
         return $connect;
