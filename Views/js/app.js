@@ -1,9 +1,9 @@
 
 
 $(document).ready(function () {
-    
+
     let boletosApartados = "";
-    const id_rifa =$('.tarjeta').attr("rifa");
+    const id_rifa = $('.tarjeta').attr("rifa");
     const tituloSorteo = $('#descripcion_sorteo').text();
 
     // Menu Responsivo
@@ -50,7 +50,16 @@ $(document).ready(function () {
         }
 
     });
-    MostrarBoletos = function(){
+// Paginacion de Boletos
+    function paginacion(){
+
+        
+    }
+
+    paginacion();
+
+
+    MostrarBoletos = function () {
         if (boletosApartados == '') {
             $('.content-boletos').text('No hay Boletos Apartados');
             $('formulario-boletos').hide();
@@ -59,17 +68,17 @@ $(document).ready(function () {
             $('.content-boletos').text(`Tus numeros de boletos son:  \n ${boletosApartados}`)
         }
     }
-//    Formulario Boletos Apartados
-    $(".apartarBoletos").click(function(){
-       $('#confirmar').show();
-       MostrarBoletos()
+    //    Formulario Boletos Apartados
+    $(".apartarBoletos").click(function () {
+        $('#confirmar').show();
+        MostrarBoletos()
     })
     // Cerrar la modal
-    $('#close-modal').click(function(){
+    $('#close-modal').click(function () {
         $('#confirmar').hide();
     })
-
-    $('#formulario-boletos').submit(function(e){
+    // apartar los Boletos
+    $('#formulario-boletos').submit(function (e) {
         e.preventDefault();
         const url = location.href;
         const data = {
@@ -86,25 +95,26 @@ $(document).ready(function () {
             type: 'POST',
             url: url,
             data: data,
-            beforeSend: function(){
+            beforeSend: function () {
                 console.log('esperando respuesta');
             },
-            success: function(response){
+            success: function (response) {
                 console.log(response);
-                const nombre = data.nombre+" "+data.apellido
-                 Mensaje(data.boletos,nombre);
+                const nombre = data.nombre + " " + data.apellido
+                Mensaje(data.boletos, nombre);
                 Swal.fire({
                     title: 'Exito!',
                     text: 'Tus Boletos han sido Apartados',
                     icon: 'success',
                     confirmButtonText: 'OK'
-                  }.then(location.reload()));
-                
+                }.then(location.reload()));
+
             }
         })
-       
+
     })
-    function Mensaje(boletos, nombre){
+    // Mostrar Mensaje de Whatsapp
+    function Mensaje(boletos, nombre) {
         const mensaje = `Hola, Aparté boletos para el Sorteo Express💫
     ${tituloSorteo}
     ——————————————
@@ -126,7 +136,43 @@ $(document).ready(function () {
     
     El siguiente paso es enviar foto del comprobante de pago por aquí!`
 
-    window.open(`https://api.whatsapp.com/send?phone=523481270467&text=${mensaje}`)
- 
+        window.open(`https://api.whatsapp.com/send?phone=523481270467&text=${mensaje}`)
+
     }
+    // Verficar Boletos en el Buscador
+    $('#verificador').submit(function (e) {
+        e.preventDefault();
+        const url = location.href;
+        const data = {
+            numero: $('#verificar-boletos').val()
+        }
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: data,
+            beforeSend: function () {
+                console.log('esperando respuesta');
+            },
+            success: function (response) {
+                boletos = JSON.parse(response);
+                let template = '';
+                boletos.forEach(task => {
+                    template += `
+                            <tr class="text-center border">
+                            <td>${task.nombre}</td>
+                            <td>
+                              ${task.Boleto}                 
+                            </td>
+                            <td><p class="bg-teal-700 text-white">${task.Estado}</p></td> 
+                            </tr>
+                          `
+                  });
+                  $('#boletos').html(template);
+                  
+            }
+        })
+
+
+
+    })
 })

@@ -2,36 +2,29 @@
 
 class HomeController
 {
-
-    public function view()
+    public function __construct()
     {
         if (
             isset($_SERVER["REQUEST_METHOD"]) &&
             $_SERVER["REQUEST_METHOD"] == "POST"
         ) {
-            // EnviarWhatsapp($_POST['numero'],$_POST['boletos']);
-            // echo $_POST['boletos'];
-            $HomeController = new HomeController();
-            $HomeController->ApartarBoletos($_POST);
-
-        } else {
-            // Consulta la rifa e su informacion
-            $response = RifasModel::mostrar_rifas();
-            $rifas = $response;
-            $id_rifa = $response[0]->id_rifas;
-            // Consulta los boletos de la rifa seleccionada
-            $boletos = RifasModel::Boletos_disponibles($id_rifa);
-            // Mostrar los boletos Disponibles
-            $boletosDisponibles = RifasModel::BoletosDisponibles($id_rifa);
-
-            
-
-            include 'views/home.view.php';
+            $this->ApartarBoletos($_POST);
+        }else{
+            $this->MostrarBoletos();
         }
-
-
-
     }
+    public function MostrarBoletos()
+    {
+        // Consulta la rifa e su informacion
+        $rifas = RifasModel::mostrar_rifas();
+        $id_rifa = $rifas[0]->id_rifas;
+        // Consulta los boletos de la rifa seleccionada
+        $boletos = RifasModel::Boletos_disponibles($id_rifa);
+        // Mostrar los boletos Disponibles
+        $boletosDisponibles = RifasModel::BoletosDisponibles($id_rifa);
+        include 'views/home.view.php';
+    }
+    // }
     public function ApartarBoletos($datos)
     {
         $num_boletos = str_replace(' ', '|', $datos['boletos']);

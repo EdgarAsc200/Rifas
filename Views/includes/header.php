@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
- 
+  <link rel="stylesheet" href="https://bootswatch.com/superhero/bootstrap.css">
 </head>
   
 <body class="bg-gray-200">
@@ -33,16 +33,16 @@
         <ul
           class="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-teal-700 :bg-teal-700 md:bg-teal-700 border-gray-700">
           <li>
-            <a href="#"
+            <a href="/"
               class="block py-2 pl-3 pr-4 text-white bg-teal-900 rounded md:bg-transparent md:text-white md:p-0 text-white"
               aria-current="page">Inicio</a>
           </li>
           <li>
-            <a href="#"
+            <a href="/rifas"
               class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-teal-900 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 text-gray-400 md:hover:text-white hover:bg-teal-900 hover:text-white md:hover:bg-transparent">Rifas</a>
           </li>
           <li>
-            <a href="#"
+            <a href="/verificador"
               class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 text-gray-400 md:hover:text-white hover:bg-teal-900 hover:text-white md:hover:bg-transparent">Verificador</a>
           </li>
           <li>

@@ -42,15 +42,15 @@ include 'includes/header.php';
         <i class="fa-solid text-xl  m-1 rounded p-1 bg-gray-700 fa-ticket text-white"></i><b>Boleto Apartado</b>
       </p>
       <br>
-      <div class="contenedor-boletos text-center grid grid-cols-5  lg:grid-cols-10 gap-3">
+      <div class="contenedor-boletos text-center grid grid-cols-12  lg:grid-cols-10 gap-1">
         <?php foreach ($boletos as $value):
           if ($value->status == 0) { ?>
             <button id=" <?= $value->numero ?>"
-              class=" boleto boletoDisponible text-2xl rounded  bg-teal-700  text-white">
-              <i class="fa-solid fa-ticket"></i>  <br>
+              class=" boleto boletoDisponible rounded text-xs bg-teal-700  text-white">
+              <i class="fa-solid fa-ticket"></i><br>
               <?= $value->numero ?></button>
           <?php } else { ?>
-            <button id=" <?= $value->numero ?>" class=" boleto text-2xl  rounded  bg-gray-700  text-white">
+            <button id=" <?= $value->numero ?>" class=" boleto text-xs rounded  bg-gray-700  text-white">
              <i class="fa-solid fa-ticket"></i>  <br>
               <?= $value->numero ?></button>
           <?php }endforeach ?>

@@ -1,8 +1,13 @@
 <?php
 // Requerir  Modelos
 require_once 'models/rifas.model.php';
+require_once 'models/verificar.model.php';
+
 // Requerir Controladores
 require_once 'controllers/home.controller.php';
+require_once 'controllers/rifas.controller.php';
+require_once 'controllers/verificador.controller.php';
+
 // Requerir Middlewares
 require_once 'middlewares/whatsapp.php';
 
@@ -11,9 +16,10 @@ require_once 'middlewares/whatsapp.php';
 
     if(empty($uri[1])){
        $index = new  HomeController();
-       $index->view();
+       return $index;
        
     }
     else {
-        echo "Si hay peteticion en la ruta: ".$uri[1];   
+        $vista = $uri[1].'controller';
+        $controlador = new $vista;  
     } 
