@@ -13,13 +13,15 @@ require_once 'middlewares/whatsapp.php';
 
     // Establecer la ruta a la cual se va acceder
     $uri = explode('/',$_SERVER['REQUEST_URI']);
+    $url = explode('?',$uri[1]);
+    
 
-    if(empty($uri[1])){
+    if(empty($url[0])){
        $index = new  HomeController();
        return $index;
        
     }
     else {
-        $vista = $uri[1].'controller';
+        $vista = $url[0].'controller';
         $controlador = new $vista;  
     } 

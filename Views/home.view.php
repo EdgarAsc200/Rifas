@@ -56,9 +56,13 @@ include 'includes/header.php';
           <?php }endforeach ?>
       </div>
       <div class="mt-4 mx-auto text-center">
+      <?php  paginacion($pagina,$inicio,$registros,$totalBoletos); ?>
         <h1 class="text-3xl text-gray-600 text-center">Boletos Apartados</h1>
         <div class="boletos-apartados text-center flex">
 
+        <div class="paginacion">
+       
+        </div>
         </div>
         <button id="" class="apartarBoletos rounded hover:bg-teal-800 my-3 px-4 py-3 bg-teal-700 text-white text-2xl">APARTAR
           BOLETO</button>

@@ -1,5 +1,5 @@
 <?php
-
+require_once 'middlewares/paginacion.php';
 class HomeController
 {
     public function __construct()
@@ -18,11 +18,18 @@ class HomeController
         // Consulta la rifa e su informacion
         $rifas = RifasModel::mostrar_rifas();
         $id_rifa = $rifas[0]->id_rifas;
+        // Variables para la paginacion
+        $pagina  = (isset($_GET['pagina'])) ? $_GET['pagina'] : 1;
+        $registros = 100;
+        $inicio = ($pagina*$registros)-$registros;
+        $totalBoletos = count(RifasModel::Total_Boletos($id_rifa));
+
         // Consulta los boletos de la rifa seleccionada
-        $boletos = RifasModel::Boletos_disponibles($id_rifa);
+        $boletos = RifasModel::Boletos_disponibles($id_rifa,$inicio,$registros);
         // Mostrar los boletos Disponibles
         $boletosDisponibles = RifasModel::BoletosDisponibles($id_rifa);
         include 'views/home.view.php';
+       
     }
     // }
     public function ApartarBoletos($datos)
