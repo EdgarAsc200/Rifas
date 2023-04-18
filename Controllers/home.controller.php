@@ -1,5 +1,5 @@
 <?php
-require_once 'middlewares/paginacion.php';
+
 class HomeController
 {
     public function __construct()
@@ -20,7 +20,7 @@ class HomeController
         $id_rifa = $rifas[0]->id_rifas;
         // Variables para la paginacion
         $pagina  = (isset($_GET['pagina'])) ? $_GET['pagina'] : 1;
-        $registros = 100;
+        $registros = 50;
         $inicio = ($pagina*$registros)-$registros;
         $totalBoletos = count(RifasModel::Total_Boletos($id_rifa));
 
