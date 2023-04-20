@@ -16,13 +16,21 @@ require_once 'middlewares/paginacion.php';
     $uri = explode('/',$_SERVER['REQUEST_URI']);
     // $url = explode('?',$uri[1]);
     
+    // $routes = array(
+    //     "/" => HomeController(),
+    //     "rifas" => RifasController(),
 
+    // );
     if(empty(explode('?',$uri[1])[0])){
        $index = new  HomeController();
        return $index;
        
     }
     else {
+        if(!class_exists(explode('?',$uri[1])[0].'controller')){
+            $index = new  HomeController();
+             return $index;
+        }
         $vista = explode('?',$uri[1])[0].'controller';
         $controlador = new $vista;  
     } 
